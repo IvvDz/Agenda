@@ -1,12 +1,13 @@
-Principal=Main
+Principal=Principal
 MAIN_CLASS=aplicacion.$(P)
 SRC_DIR=./src
 OUT_DIR=bin
+LIB_DIR=./lib
 DOC_DIR=html
 JAR_FILE = $(P).jar
 compilar:limpiar
 	mkdir $(OUT_DIR)
-	find $(SRC_DIR) -name *.java | xargs javac -cp $(OUT_DIR): -d $(OUT_DIR)
+	find $(SRC_DIR) -name *.java | xargs javac -cp $(OUT_DIR):$(LIB_DIR) -d $(OUT_DIR)
 
 jar:compilar
 	jar cvfm $(JAR_FILE) manifest.txt  -C  $(OUT_DIR) .
@@ -27,4 +28,4 @@ runjar: jar
 	@echo "Main-Class:" $(MAIN_CLASS) >> manifest.txt
 	@echo "Class-Path: . ">> manifest.txt
 	@echo "" >> manifest.txt	
-	java -jar $(JAR_FILE) 
+	java -jar $(JAR_FILE)  
