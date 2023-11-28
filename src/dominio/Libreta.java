@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.io.Serializable;
 
-public class Libreta {
+public class Libreta implements Serializable{
     private ArrayList<Contacto> listaDeContactos;
     public Libreta() {
         this.listaDeContactos = new ArrayList<>();
